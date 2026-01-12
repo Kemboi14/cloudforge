@@ -1,0 +1,83 @@
+Fixing image availability for k3s...
+Making images available to k3s...
+Saving images from Podman...
+Copying blob sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472
+Copying blob sha256:501421e049a171e15631e0b0e231ffd456ee4685f5b5b22cd98163cde83f2c6c
+Copying blob sha256:72533f233c8abf13e297ce15ecbd0ca43a452405a88cb704f3e43a8db89ffe90
+Copying blob sha256:253032e9f52a50fa025102eb1834cb841de4963cbebf37c593c147ccc36f537c
+Copying blob sha256:4c08258c962331e60338e236809dcd7bbdace6b22da9f41f9377a9a8af4fcfa7
+Copying blob sha256:241af464a8bbb574b04300a3392c760d9086b923c78e3317a46b95d86aa62483
+Copying blob sha256:5cc4900c3aec338a2b4ceca9b396701ca5aafcbbe0b0f919279719b17a5681ec
+Copying blob sha256:f6a040d5da55c5af62105c15e517040851e0d434c1a157b898de2605ea6cd99e
+Copying blob sha256:608725d6b267383d064c0ef6ec36c503633ae519f5ef53bb762d987c9976c952
+Copying config sha256:c171b75d983611de1ba8e3490f6342ec27559b5f1a1d94433402f0598d0afab5
+Writing manifest to image destination
+Copying blob sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472
+Copying blob sha256:501421e049a171e15631e0b0e231ffd456ee4685f5b5b22cd98163cde83f2c6c
+Copying blob sha256:72533f233c8abf13e297ce15ecbd0ca43a452405a88cb704f3e43a8db89ffe90
+Copying blob sha256:253032e9f52a50fa025102eb1834cb841de4963cbebf37c593c147ccc36f537c
+Copying blob sha256:e2a0cc6a5b32d391e47d58c370d140fd4a28fe8bcf3dd3b12a2ff10eb510be5e
+Copying blob sha256:1c6a467cc9c0160a22167f5d08c620aaea5e1d17a0aa818d8798ea47d61d0121
+Copying blob sha256:21514fb2338eec6f8c1545a6b2ace0e3da970352fb3d9a9e85d7a8c05fafcafc
+Copying blob sha256:d27e21c42c9f4edbf43eb95a539f4fbe07147f202e5010442a5317ac9b709eb3
+Copying blob sha256:6af2d8ada5a210ce453875c4a48aa50f2f8a5d398ebb16dab10092ef4d0c65fd
+Copying config sha256:7a8a637543143de1e4db912a277ba11782ec3491fb2e9ca6ef71267a9f4cb27e
+Writing manifest to image destination
+Copying blob sha256:7bb20cf5ef67526cb843d264145241ce4dde09a337b5be1be42ba464de9a672d
+Copying blob sha256:fd1e40d7f74b5c12a5d7cd010e7c978719bcc364b758e951b729d6e97469f3f9
+Copying blob sha256:48078b7e3000f40c4d67cb908f5bb56a322b757f7ccdf09794a109317da7a37a
+Copying blob sha256:b3e3d1bbb64d1d10e26662b1f8528f1afd0271b85edcd2d8371d09fc0a606dba
+Copying blob sha256:8ae63eb1f31f3155ef6ccdc63d777602944e975b9a6c38909257c62a623dee60
+Copying blob sha256:ed5fa8595c7aa2584655c40c2835c75fc0c2039f72a2dac993442a4d19a7266b
+Copying blob sha256:67ea0b046e7d3167953e9b192b7fb23be8ad6c026e65294b7070583e68fe5807
+Copying blob sha256:1b91aa91442e6c253a0267a18d0d18b8528dbe6438941db7404952539f57f5d7
+Copying blob sha256:557f3186140b41464c34ca8e2096a0e44df6d461c9cb1d9df176c3d4fec076d9
+Copying blob sha256:843e985d52919368bb2dcba4ac8f941f25c4b6bc9175b6fc800f0d9b9d92741a
+Copying blob sha256:67ebf80ee8502f66b8aed487c89e0de6ccd5f2c5ab69ac0d5e9bf5ef0dd5c6e8
+Copying config sha256:bd44ac682184ed05540d6b6c7b6832df4d132ce5e215ee05a017cd8abaa87e5a
+Writing manifest to image destination
+Loading images into k3s...
+localhost/cloudforge auth:latest        	saved	
+application/vnd.docker.distribution.manifest.v2+json sha256:24f382cd7af415a0a96880da180b8068610468a9fccc8c824176c85e009257ac
+Importing	elapsed: 18.9s	total:   0.0 B	(0.0 B/s)	
+localhost/cloudforge users:latest       	saved	
+application/vnd.docker.distribution.manifest.v2+json sha256:4777209e32312a52c00e559c6259c9f1e9b41090a18ac94c5da86b58e8fa6b90
+Importing	elapsed: 19.2s	total:   0.0 B	(0.0 B/s)	
+localhost/cloudforge frontend:latest    	saved	
+application/vnd.docker.distribution.manifest.v2+json sha256:992d426d38360a9466cb2ae573145c96b54479c4814fe5ec81e054699f19d088
+Importing	elapsed: 9.3 s	total:   0.0 B	(0.0 B/s)	
+Available images in k3s:
+REF                                                                                                                TYPE                                                      DIGEST                                                                  SIZE      PLATFORMS                                                                    LABELS                          
+docker.io/rancher/klipper-helm:v0.9.12-build20251215                                                               application/vnd.oci.image.index.v1+json                   sha256:9fbadb1e55ea0030dacc82d7c8c744f350b4be82305df3757950348a25393533 62.5 MiB  linux/amd64,linux/arm/v7,linux/arm64                                         io.cri-containerd.image=managed 
+docker.io/rancher/klipper-helm@sha256:9fbadb1e55ea0030dacc82d7c8c744f350b4be82305df3757950348a25393533             application/vnd.oci.image.index.v1+json                   sha256:9fbadb1e55ea0030dacc82d7c8c744f350b4be82305df3757950348a25393533 62.5 MiB  linux/amd64,linux/arm/v7,linux/arm64                                         io.cri-containerd.image=managed 
+docker.io/rancher/klipper-lb:v0.4.13                                                                               application/vnd.oci.image.index.v1+json                   sha256:7eb86d5b908ec6ddd9796253d8cc2f43df99420fc8b8a18452a94dc56f86aca0 4.8 MiB   linux/amd64,linux/arm/v7,linux/arm64                                         io.cri-containerd.image=managed 
+docker.io/rancher/klipper-lb@sha256:7eb86d5b908ec6ddd9796253d8cc2f43df99420fc8b8a18452a94dc56f86aca0               application/vnd.oci.image.index.v1+json                   sha256:7eb86d5b908ec6ddd9796253d8cc2f43df99420fc8b8a18452a94dc56f86aca0 4.8 MiB   linux/amd64,linux/arm/v7,linux/arm64                                         io.cri-containerd.image=managed 
+docker.io/rancher/local-path-provisioner:v0.0.32                                                                   application/vnd.oci.image.index.v1+json                   sha256:9289da488b07912cb4128eb96928a331a5f3e60c28c5cfc5790f354a4ad0cc68 20.2 MiB  linux/amd64,linux/arm/v7,linux/arm64,linux/riscv64                           io.cri-containerd.image=managed 
+docker.io/rancher/local-path-provisioner@sha256:9289da488b07912cb4128eb96928a331a5f3e60c28c5cfc5790f354a4ad0cc68   application/vnd.oci.image.index.v1+json                   sha256:9289da488b07912cb4128eb96928a331a5f3e60c28c5cfc5790f354a4ad0cc68 20.2 MiB  linux/amd64,linux/arm/v7,linux/arm64,linux/riscv64                           io.cri-containerd.image=managed 
+docker.io/rancher/mirrored-coredns-coredns:1.13.1                                                                  application/vnd.docker.distribution.manifest.list.v2+json sha256:9b9128672209474da07c91439bf15ed704ae05ad918dd6454e5b6ae14e35fee6 22.5 MiB  linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x io.cri-containerd.image=managed 
+docker.io/rancher/mirrored-coredns-coredns@sha256:9b9128672209474da07c91439bf15ed704ae05ad918dd6454e5b6ae14e35fee6 application/vnd.docker.distribution.manifest.list.v2+json sha256:9b9128672209474da07c91439bf15ed704ae05ad918dd6454e5b6ae14e35fee6 22.5 MiB  linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x io.cri-containerd.image=managed 
+docker.io/rancher/mirrored-library-traefik:3.5.1                                                                   application/vnd.oci.image.index.v1+json                   sha256:c56901603318ee375477ee5c3f50d175d3ec42dc102efc2f1158f0756ba4dffa 47.4 MiB  linux/amd64,linux/arm/v6,linux/arm64/v8,linux/ppc64le,linux/s390x            io.cri-containerd.image=managed 
+docker.io/rancher/mirrored-library-traefik@sha256:c56901603318ee375477ee5c3f50d175d3ec42dc102efc2f1158f0756ba4dffa application/vnd.oci.image.index.v1+json                   sha256:c56901603318ee375477ee5c3f50d175d3ec42dc102efc2f1158f0756ba4dffa 47.4 MiB  linux/amd64,linux/arm/v6,linux/arm64/v8,linux/ppc64le,linux/s390x            io.cri-containerd.image=managed 
+docker.io/rancher/mirrored-metrics-server:v0.8.0                                                                   application/vnd.docker.distribution.manifest.list.v2+json sha256:89258156d0e9af60403eafd44da9676fd66f600c7934d468ccc17e42b199aee2 21.5 MiB  linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x            io.cri-containerd.image=managed 
+docker.io/rancher/mirrored-metrics-server@sha256:89258156d0e9af60403eafd44da9676fd66f600c7934d468ccc17e42b199aee2  application/vnd.docker.distribution.manifest.list.v2+json sha256:89258156d0e9af60403eafd44da9676fd66f600c7934d468ccc17e42b199aee2 21.5 MiB  linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x            io.cri-containerd.image=managed 
+docker.io/rancher/mirrored-pause:3.6                                                                               application/vnd.docker.distribution.manifest.list.v2+json sha256:74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893 294.4 KiB linux/amd64,linux/arm/v7,linux/arm64,linux/s390x,windows/amd64               io.cri-containerd.image=managed 
+docker.io/rancher/mirrored-pause@sha256:74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893           application/vnd.docker.distribution.manifest.list.v2+json sha256:74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893 294.4 KiB linux/amd64,linux/arm/v7,linux/arm64,linux/s390x,windows/amd64               io.cri-containerd.image=managed 
+localhost/cloudforge-auth:latest                                                                                   application/vnd.docker.distribution.manifest.v2+json      sha256:24f382cd7af415a0a96880da180b8068610468a9fccc8c824176c85e009257ac 386.2 MiB linux/amd64                                                                  io.cri-containerd.image=managed 
+localhost/cloudforge-frontend:latest                                                                               application/vnd.docker.distribution.manifest.v2+json      sha256:992d426d38360a9466cb2ae573145c96b54479c4814fe5ec81e054699f19d088 61.1 MiB  linux/amd64                                                                  io.cri-containerd.image=managed 
+localhost/cloudforge-users:latest                                                                                  application/vnd.docker.distribution.manifest.v2+json      sha256:4777209e32312a52c00e559c6259c9f1e9b41090a18ac94c5da86b58e8fa6b90 381.7 MiB linux/amd64                                                                  io.cri-containerd.image=managed 
+sha256:2d868e2f7bff1a49d2360c1134b5b9cace4c3bb63d84b364e92cb5ce6b58e233                                            application/vnd.oci.image.index.v1+json                   sha256:9fbadb1e55ea0030dacc82d7c8c744f350b4be82305df3757950348a25393533 62.5 MiB  linux/amd64,linux/arm/v7,linux/arm64                                         io.cri-containerd.image=managed 
+sha256:4419b2fa5e66fb32a7f6310e7bdd4939af690032addedd6b8eea426c57afa3c7                                            application/vnd.docker.distribution.manifest.v2+json      sha256:af6fe39ba46a5e86a134a8c7495ea4f7ab6437e3987084ee7a7e81ac443dc439 378.8 MiB linux/amd64                                                                  io.cri-containerd.image=managed 
+sha256:6270bb605e12e581514ada5fd5b3216f727db55dc87d5889c790e4c760683fee                                            application/vnd.docker.distribution.manifest.list.v2+json sha256:74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893 294.4 KiB linux/amd64,linux/arm/v7,linux/arm64,linux/s390x,windows/amd64               io.cri-containerd.image=managed 
+sha256:7a8a637543143de1e4db912a277ba11782ec3491fb2e9ca6ef71267a9f4cb27e                                            application/vnd.docker.distribution.manifest.v2+json      sha256:4777209e32312a52c00e559c6259c9f1e9b41090a18ac94c5da86b58e8fa6b90 381.7 MiB linux/amd64                                                                  io.cri-containerd.image=managed 
+sha256:8df847a19b384a02d6815ad145d267438250a90a59f08679145b61f790c64f05                                            application/vnd.oci.image.index.v1+json                   sha256:c56901603318ee375477ee5c3f50d175d3ec42dc102efc2f1158f0756ba4dffa 47.4 MiB  linux/amd64,linux/arm/v6,linux/arm64/v8,linux/ppc64le,linux/s390x            io.cri-containerd.image=managed 
+sha256:aa5e3ebc0dfed0566805186b9e47110d8f9122291d8bad1497e78873ad291139                                            application/vnd.docker.distribution.manifest.list.v2+json sha256:9b9128672209474da07c91439bf15ed704ae05ad918dd6454e5b6ae14e35fee6 22.5 MiB  linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x io.cri-containerd.image=managed 
+sha256:b9e1e3849e07022817ebc1612858382f0c0b91d00e4dcd2996adc1df6ced26e9                                            application/vnd.docker.distribution.manifest.list.v2+json sha256:89258156d0e9af60403eafd44da9676fd66f600c7934d468ccc17e42b199aee2 21.5 MiB  linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x            io.cri-containerd.image=managed 
+sha256:bd44ac682184ed05540d6b6c7b6832df4d132ce5e215ee05a017cd8abaa87e5a                                            application/vnd.docker.distribution.manifest.v2+json      sha256:992d426d38360a9466cb2ae573145c96b54479c4814fe5ec81e054699f19d088 61.1 MiB  linux/amd64                                                                  io.cri-containerd.image=managed 
+sha256:c171b75d983611de1ba8e3490f6342ec27559b5f1a1d94433402f0598d0afab5                                            application/vnd.docker.distribution.manifest.v2+json      sha256:24f382cd7af415a0a96880da180b8068610468a9fccc8c824176c85e009257ac 386.2 MiB linux/amd64                                                                  io.cri-containerd.image=managed 
+sha256:cb584e17a5f4bdc03011c803f10a77af4e3be190745705c716cdb6cd35cd6e5d                                            application/vnd.oci.image.index.v1+json                   sha256:9289da488b07912cb4128eb96928a331a5f3e60c28c5cfc5790f354a4ad0cc68 20.2 MiB  linux/amd64,linux/arm/v7,linux/arm64,linux/riscv64                           io.cri-containerd.image=managed 
+sha256:f7415d0003cb62ded390ed491fc842ee821878a04cc137196c21c1050101dd5e                                            application/vnd.oci.image.index.v1+json                   sha256:7eb86d5b908ec6ddd9796253d8cc2f43df99420fc8b8a18452a94dc56f86aca0 4.8 MiB   linux/amd64,linux/arm/v7,linux/arm64                                         io.cri-containerd.image=managed 
+Restarting deployments...
+deployment.apps/auth-deployment restarted
+deployment.apps/users-deployment restarted
+deployment.apps/frontend-deployment restarted
+Waiting for pods to be ready...

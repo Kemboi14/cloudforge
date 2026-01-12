@@ -1,0 +1,123 @@
+=== Checking Pod Logs ===
+
+=== Logs for auth-deployment-786f888b9b-lq5n9 ===
+    super(SubclassBackendMixin, cls)._set_backend(name, dryrun)
+  File "/usr/local/lib/python3.11/site-packages/passlib/utils/handlers.py", line 2224, in _set_backend
+    ok = loader(**kwds)
+         ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/passlib/handlers/bcrypt.py", line 626, in _load_backend_mixin
+    return mixin_cls._finalize_backend_mixin(name, dryrun)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/passlib/handlers/bcrypt.py", line 421, in _finalize_backend_mixin
+    if detect_wrap_bug(IDENT_2A):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/passlib/handlers/bcrypt.py", line 380, in detect_wrap_bug
+    if verify(secret, bug_hash):
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/passlib/utils/handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/passlib/handlers/bcrypt.py", line 655, in _calc_checksum
+    hash = _bcrypt.hashpw(secret, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+
+=== Logs for auth-deployment-d788cf4ff-dqxwh ===
+Error from server (BadRequest): container "auth" in pod "auth-deployment-d788cf4ff-dqxwh" is waiting to start: trying and failing to pull image
+
+=== Logs for auth-deployment-db5b6d69b-krjk9 ===
+Error from server (BadRequest): container "auth" in pod "auth-deployment-db5b6d69b-krjk9" is waiting to start: trying and failing to pull image
+
+=== Logs for frontend-deployment-6db4848b68-c479r ===
+10.42.0.1 - - [12/Jan/2026:11:37:30 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:35 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:36 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+2026/01/12 11:37:40 [error] 29#29: *168 connect() failed (111: Connection refused) while connecting to upstream, client: 10.42.0.1, server: localhost, request: "GET /api/users/health HTTP/1.1", upstream: "http://10.43.8.36:8002/health", host: "localhost:30080", referrer: "http://localhost:30080/"
+10.42.0.1 - - [12/Jan/2026:11:37:40 +0000] "GET /api/users/health HTTP/1.1" 502 497 "http://localhost:30080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:40 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:45 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:46 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:49 +0000] "GET /api/auth/health HTTP/1.1" 502 497 "http://localhost:30080/" "Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0" "-"
+2026/01/12 11:37:49 [error] 30#30: *34 connect() failed (111: Connection refused) while connecting to upstream, client: 10.42.0.1, server: localhost, request: "GET /api/auth/health HTTP/1.1", upstream: "http://10.43.68.99:8001/health", host: "localhost:30080", referrer: "http://localhost:30080/"
+2026/01/12 11:37:49 [error] 30#30: *34 connect() failed (111: Connection refused) while connecting to upstream, client: 10.42.0.1, server: localhost, request: "GET /api/users/health HTTP/1.1", upstream: "http://10.43.8.36:8002/health", host: "localhost:30080", referrer: "http://localhost:30080/"
+10.42.0.1 - - [12/Jan/2026:11:37:49 +0000] "GET /api/users/health HTTP/1.1" 502 497 "http://localhost:30080/" "Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:50 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:55 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:56 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+2026/01/12 11:37:59 [error] 29#29: *168 connect() failed (111: Connection refused) while connecting to upstream, client: 10.42.0.1, server: localhost, request: "GET /api/auth/health HTTP/1.1", upstream: "http://10.43.68.99:8001/health", host: "localhost:30080", referrer: "http://localhost:30080/api"
+10.42.0.1 - - [12/Jan/2026:11:37:59 +0000] "GET /api/auth/health HTTP/1.1" 502 497 "http://localhost:30080/api" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" "-"
+10.42.0.1 - - [12/Jan/2026:11:38:00 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:38:05 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:38:06 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+
+=== Logs for frontend-deployment-6db4848b68-ctgc9 ===
+10.42.0.1 - - [12/Jan/2026:11:37:24 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:26 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+2026/01/12 11:37:29 [error] 35#35: *139 connect() failed (111: Connection refused) while connecting to upstream, client: 10.42.0.1, server: localhost, request: "GET /api/users/health HTTP/1.1", upstream: "http://10.43.8.36:8002/health", host: "localhost:30080", referrer: "http://localhost:30080/api"
+10.42.0.1 - - [12/Jan/2026:11:37:29 +0000] "GET /api/users/health HTTP/1.1" 502 497 "http://localhost:30080/api" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:29 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:34 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:36 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:39 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+2026/01/12 11:37:40 [error] 35#35: *139 connect() failed (111: Connection refused) while connecting to upstream, client: 10.42.0.1, server: localhost, request: "GET /api/auth/health HTTP/1.1", upstream: "http://10.43.68.99:8001/health", host: "localhost:30080", referrer: "http://localhost:30080/"
+10.42.0.1 - - [12/Jan/2026:11:37:40 +0000] "GET /api/auth/health HTTP/1.1" 502 497 "http://localhost:30080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:44 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:46 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:49 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:54 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:56 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+2026/01/12 11:37:59 [error] 35#35: *139 connect() failed (111: Connection refused) while connecting to upstream, client: 10.42.0.1, server: localhost, request: "GET /api/users/health HTTP/1.1", upstream: "http://10.43.8.36:8002/health", host: "localhost:30080", referrer: "http://localhost:30080/api"
+10.42.0.1 - - [12/Jan/2026:11:37:59 +0000] "GET /api/users/health HTTP/1.1" 502 497 "http://localhost:30080/api" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" "-"
+10.42.0.1 - - [12/Jan/2026:11:37:59 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:38:04 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+10.42.0.1 - - [12/Jan/2026:11:38:06 +0000] "GET / HTTP/1.1" 200 592 "-" "kube-probe/1.34" "-"
+
+=== Logs for users-deployment-5dd754d787-svmwd ===
+Error from server (BadRequest): container "users" in pod "users-deployment-5dd754d787-svmwd" is waiting to start: trying and failing to pull image
+
+=== Logs for users-deployment-5df4954688-xqb7k ===
+  File "/usr/local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 810, in match_type
+    return self._match_generic_type(obj, origin)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 834, in _match_generic_type
+    return self._union_schema(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1036, in _union_schema
+    choices.append(self.generate_schema(arg))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 463, in generate_schema
+    from_property = self._generate_schema_from_property(obj, obj)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 616, in _generate_schema_from_property
+    schema = get_schema(
+             ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pydantic/networks.py", line 390, in __get_pydantic_core_schema__
+    import_email_validator()
+  File "/usr/local/lib/python3.11/site-packages/pydantic/networks.py", line 354, in import_email_validator
+    raise ImportError('email-validator is not installed, run `pip install pydantic[email]`') from e
+ImportError: email-validator is not installed, run `pip install pydantic[email]`
+
+=== Logs for users-deployment-6c8fdfd755-zlkpz ===
+Error from server (BadRequest): container "users" in pod "users-deployment-6c8fdfd755-zlkpz" is waiting to start: trying and failing to pull image
+
+=== Pod Events ===
+10m         Normal    SuccessfulDelete    replicaset/frontend-deployment-79889cff75   Deleted pod: frontend-deployment-79889cff75-mnzv9
+10m         Normal    ScalingReplicaSet   deployment/frontend-deployment              Scaled down replica set frontend-deployment-79889cff75 from 1 to 0
+7m50s       Warning   Unhealthy           pod/users-deployment-5df4954688-xqb7k       Readiness probe failed: Get "http://10.42.0.19:8002/health": dial tcp 10.42.0.19:8002: connect: connection refused
+7m43s       Warning   Unhealthy           pod/auth-deployment-786f888b9b-lq5n9        Readiness probe failed: Get "http://10.42.0.18:8001/health": dial tcp 10.42.0.18:8001: connect: connection refused
+3m32s       Warning   Failed              pod/auth-deployment-db5b6d69b-krjk9         Error: ImagePullBackOff
+3m32s       Normal    BackOff             pod/auth-deployment-db5b6d69b-krjk9         Back-off pulling image "localhost/cloudforge-auth:latest"
+3m26s       Warning   Failed              pod/users-deployment-6c8fdfd755-zlkpz       Error: ImagePullBackOff
+3m26s       Normal    BackOff             pod/users-deployment-6c8fdfd755-zlkpz       Back-off pulling image "localhost/cloudforge-users:latest"
+3m26s       Normal    Created             pod/users-deployment-5df4954688-xqb7k       Created container: users
+3m26s       Normal    Pulled              pod/users-deployment-5df4954688-xqb7k       Container image "localhost/cloudforge-users:latest" already present on machine
+3m26s       Normal    Started             pod/users-deployment-5df4954688-xqb7k       Started container users
+3m19s       Normal    Started             pod/auth-deployment-786f888b9b-lq5n9        Started container auth
+3m19s       Normal    Created             pod/auth-deployment-786f888b9b-lq5n9        Created container: auth
+3m19s       Normal    Pulled              pod/auth-deployment-786f888b9b-lq5n9        Container image "localhost/cloudforge-auth:latest" already present on machine
+95s         Warning   Failed              pod/auth-deployment-d788cf4ff-dqxwh         Error: ImagePullBackOff
+95s         Normal    BackOff             pod/auth-deployment-d788cf4ff-dqxwh         Back-off pulling image "localhost/cloudforge-auth:latest"
+87s         Warning   Failed              pod/users-deployment-5dd754d787-svmwd       Error: ImagePullBackOff
+87s         Normal    BackOff             pod/users-deployment-5dd754d787-svmwd       Back-off pulling image "localhost/cloudforge-users:latest"
+14s         Warning   BackOff             pod/auth-deployment-786f888b9b-lq5n9        Back-off restarting failed container auth in pod auth-deployment-786f888b9b-lq5n9_cloudforge(b7b7d6dc-a6a4-4bb3-a601-d2389ea40e0e)
+5s          Warning   BackOff             pod/users-deployment-5df4954688-xqb7k       Back-off restarting failed container users in pod users-deployment-5df4954688-xqb7k_cloudforge(36aa9404-a9b9-43c6-852c-a2296aba7854)

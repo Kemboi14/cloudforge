@@ -1,0 +1,657 @@
+=== Debugging CloudForge Pods ===
+
+=== Pod Status ===
+NAME                                   READY   STATUS             RESTARTS   AGE
+auth-deployment-d788cf4ff-dqxwh        0/1     ImagePullBackOff   0          19m
+auth-deployment-db5b6d69b-krjk9        0/1     ImagePullBackOff   0          46m
+auth-deployment-db5b6d69b-qcnj9        0/1     ImagePullBackOff   0          46m
+frontend-deployment-79889cff75-mnzv9   0/1     ImagePullBackOff   0          19m
+frontend-deployment-9c9d585c6-bz2rg    0/1     ImagePullBackOff   0          46m
+frontend-deployment-9c9d585c6-l7sfp    0/1     ImagePullBackOff   0          46m
+users-deployment-5dd754d787-svmwd      0/1     ImagePullBackOff   0          19m
+users-deployment-6c8fdfd755-s9dts      0/1     ImagePullBackOff   0          46m
+users-deployment-6c8fdfd755-zlkpz      0/1     ImagePullBackOff   0          46m
+
+=== Pod Details ===
+--- Pod: auth-deployment-d788cf4ff-dqxwh ---
+Name:             auth-deployment-d788cf4ff-dqxwh
+Namespace:        cloudforge
+Priority:         0
+Service Account:  default
+Node:             fedora/192.168.100.34
+Start Time:       Mon, 12 Jan 2026 14:06:30 +0300
+Labels:           app=auth
+                  pod-template-hash=d788cf4ff
+                  service=auth-service
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-01-12T14:06:30+03:00
+Status:           Pending
+IP:               10.42.0.15
+IPs:
+  IP:           10.42.0.15
+Controlled By:  ReplicaSet/auth-deployment-d788cf4ff
+Containers:
+  auth:
+    Container ID:   
+    Image:          localhost/cloudforge-auth:latest
+    Image ID:       
+    Port:           8001/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     200m
+      memory:  256Mi
+    Requests:
+      cpu:      100m
+      memory:   128Mi
+    Liveness:   http-get http://:8001/health delay=30s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:8001/health delay=5s timeout=1s period=5s #success=1 #failure=3
+    Environment:
+      PORT:                         8001
+      SECRET_KEY:                   <set to the key 'SECRET_KEY' in secret 'cloudforge-secrets'>  Optional: false
+      ACCESS_TOKEN_EXPIRE_MINUTES:  30
+      LOG_LEVEL:                    <set to the key 'LOG_LEVEL' of config map 'cloudforge-config'>  Optional: false
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-n5228 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-n5228:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                   From               Message
+  ----     ------     ----                  ----               -------
+  Normal   Scheduled  19m                   default-scheduler  Successfully assigned cloudforge/auth-deployment-d788cf4ff-dqxwh to fedora
+  Normal   Pulling    16m (x5 over 19m)     kubelet            Pulling image "localhost/cloudforge-auth:latest"
+  Warning  Failed     16m (x5 over 19m)     kubelet            Failed to pull image "localhost/cloudforge-auth:latest": rpc error: code = NotFound desc = failed to pull and unpack image "localhost/cloudforge-auth:latest": failed to resolve reference "localhost/cloudforge-auth:latest": localhost/cloudforge-auth:latest: not found
+  Warning  Failed     16m (x5 over 19m)     kubelet            Error: ErrImagePull
+  Normal   BackOff    4m44s (x64 over 19m)  kubelet            Back-off pulling image "localhost/cloudforge-auth:latest"
+  Warning  Failed     4m44s (x64 over 19m)  kubelet            Error: ImagePullBackOff
+
+=== Logs for auth-deployment-d788cf4ff-dqxwh ===
+Error from server (BadRequest): container "auth" in pod "auth-deployment-d788cf4ff-dqxwh" is waiting to start: trying and failing to pull image
+
+--- Pod: auth-deployment-db5b6d69b-krjk9 ---
+Name:             auth-deployment-db5b6d69b-krjk9
+Namespace:        cloudforge
+Priority:         0
+Service Account:  default
+Node:             fedora/192.168.100.34
+Start Time:       Mon, 12 Jan 2026 13:39:33 +0300
+Labels:           app=auth
+                  pod-template-hash=db5b6d69b
+                  service=auth-service
+Annotations:      <none>
+Status:           Pending
+IP:               10.42.0.10
+IPs:
+  IP:           10.42.0.10
+Controlled By:  ReplicaSet/auth-deployment-db5b6d69b
+Containers:
+  auth:
+    Container ID:   
+    Image:          localhost/cloudforge-auth:latest
+    Image ID:       
+    Port:           8001/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     200m
+      memory:  256Mi
+    Requests:
+      cpu:      100m
+      memory:   128Mi
+    Liveness:   http-get http://:8001/health delay=30s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:8001/health delay=5s timeout=1s period=5s #success=1 #failure=3
+    Environment:
+      PORT:                         8001
+      SECRET_KEY:                   <set to the key 'SECRET_KEY' in secret 'cloudforge-secrets'>  Optional: false
+      ACCESS_TOKEN_EXPIRE_MINUTES:  30
+      LOG_LEVEL:                    <set to the key 'LOG_LEVEL' of config map 'cloudforge-config'>  Optional: false
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-9wzvz (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-9wzvz:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                  From               Message
+  ----     ------     ----                 ----               -------
+  Normal   Scheduled  46m                  default-scheduler  Successfully assigned cloudforge/auth-deployment-db5b6d69b-krjk9 to fedora
+  Normal   Pulling    43m (x5 over 46m)    kubelet            Pulling image "localhost/cloudforge-auth:latest"
+  Warning  Failed     43m (x5 over 46m)    kubelet            Failed to pull image "localhost/cloudforge-auth:latest": rpc error: code = NotFound desc = failed to pull and unpack image "localhost/cloudforge-auth:latest": failed to resolve reference "localhost/cloudforge-auth:latest": localhost/cloudforge-auth:latest: not found
+  Warning  Failed     43m (x5 over 46m)    kubelet            Error: ErrImagePull
+  Normal   BackOff    97s (x197 over 46m)  kubelet            Back-off pulling image "localhost/cloudforge-auth:latest"
+  Warning  Failed     97s (x197 over 46m)  kubelet            Error: ImagePullBackOff
+
+=== Logs for auth-deployment-db5b6d69b-krjk9 ===
+Error from server (BadRequest): container "auth" in pod "auth-deployment-db5b6d69b-krjk9" is waiting to start: trying and failing to pull image
+
+--- Pod: auth-deployment-db5b6d69b-qcnj9 ---
+Name:             auth-deployment-db5b6d69b-qcnj9
+Namespace:        cloudforge
+Priority:         0
+Service Account:  default
+Node:             fedora/192.168.100.34
+Start Time:       Mon, 12 Jan 2026 13:39:33 +0300
+Labels:           app=auth
+                  pod-template-hash=db5b6d69b
+                  service=auth-service
+Annotations:      <none>
+Status:           Pending
+IP:               10.42.0.9
+IPs:
+  IP:           10.42.0.9
+Controlled By:  ReplicaSet/auth-deployment-db5b6d69b
+Containers:
+  auth:
+    Container ID:   
+    Image:          localhost/cloudforge-auth:latest
+    Image ID:       
+    Port:           8001/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     200m
+      memory:  256Mi
+    Requests:
+      cpu:      100m
+      memory:   128Mi
+    Liveness:   http-get http://:8001/health delay=30s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:8001/health delay=5s timeout=1s period=5s #success=1 #failure=3
+    Environment:
+      PORT:                         8001
+      SECRET_KEY:                   <set to the key 'SECRET_KEY' in secret 'cloudforge-secrets'>  Optional: false
+      ACCESS_TOKEN_EXPIRE_MINUTES:  30
+      LOG_LEVEL:                    <set to the key 'LOG_LEVEL' of config map 'cloudforge-config'>  Optional: false
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-7jchd (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-7jchd:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                  From               Message
+  ----     ------     ----                 ----               -------
+  Normal   Scheduled  46m                  default-scheduler  Successfully assigned cloudforge/auth-deployment-db5b6d69b-qcnj9 to fedora
+  Normal   Pulling    43m (x5 over 46m)    kubelet            Pulling image "localhost/cloudforge-auth:latest"
+  Warning  Failed     43m (x5 over 46m)    kubelet            Failed to pull image "localhost/cloudforge-auth:latest": rpc error: code = NotFound desc = failed to pull and unpack image "localhost/cloudforge-auth:latest": failed to resolve reference "localhost/cloudforge-auth:latest": localhost/cloudforge-auth:latest: not found
+  Warning  Failed     43m (x5 over 46m)    kubelet            Error: ErrImagePull
+  Normal   BackOff    98s (x198 over 46m)  kubelet            Back-off pulling image "localhost/cloudforge-auth:latest"
+  Warning  Failed     98s (x198 over 46m)  kubelet            Error: ImagePullBackOff
+
+=== Logs for auth-deployment-db5b6d69b-qcnj9 ===
+Error from server (BadRequest): container "auth" in pod "auth-deployment-db5b6d69b-qcnj9" is waiting to start: trying and failing to pull image
+
+--- Pod: frontend-deployment-79889cff75-mnzv9 ---
+Name:             frontend-deployment-79889cff75-mnzv9
+Namespace:        cloudforge
+Priority:         0
+Service Account:  default
+Node:             fedora/192.168.100.34
+Start Time:       Mon, 12 Jan 2026 14:06:32 +0300
+Labels:           app=frontend
+                  pod-template-hash=79889cff75
+                  service=frontend-service
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-01-12T14:06:32+03:00
+Status:           Pending
+IP:               10.42.0.17
+IPs:
+  IP:           10.42.0.17
+Controlled By:  ReplicaSet/frontend-deployment-79889cff75
+Containers:
+  frontend:
+    Container ID:   
+    Image:          localhost/cloudforge-frontend:latest
+    Image ID:       
+    Port:           3000/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     100m
+      memory:  128Mi
+    Requests:
+      cpu:        50m
+      memory:     64Mi
+    Liveness:     http-get http://:3000/ delay=30s timeout=1s period=10s #success=1 #failure=3
+    Readiness:    http-get http://:3000/ delay=5s timeout=1s period=5s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-ln64d (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-ln64d:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                   From               Message
+  ----     ------     ----                  ----               -------
+  Normal   Scheduled  19m                   default-scheduler  Successfully assigned cloudforge/frontend-deployment-79889cff75-mnzv9 to fedora
+  Normal   Pulling    16m (x5 over 19m)     kubelet            Pulling image "localhost/cloudforge-frontend:latest"
+  Warning  Failed     16m (x5 over 19m)     kubelet            Failed to pull image "localhost/cloudforge-frontend:latest": rpc error: code = NotFound desc = failed to pull and unpack image "localhost/cloudforge-frontend:latest": failed to resolve reference "localhost/cloudforge-frontend:latest": localhost/cloudforge-frontend:latest: not found
+  Warning  Failed     16m (x5 over 19m)     kubelet            Error: ErrImagePull
+  Normal   BackOff    4m48s (x63 over 19m)  kubelet            Back-off pulling image "localhost/cloudforge-frontend:latest"
+  Warning  Failed     4m48s (x63 over 19m)  kubelet            Error: ImagePullBackOff
+
+=== Logs for frontend-deployment-79889cff75-mnzv9 ===
+Error from server (BadRequest): container "frontend" in pod "frontend-deployment-79889cff75-mnzv9" is waiting to start: trying and failing to pull image
+
+--- Pod: frontend-deployment-9c9d585c6-bz2rg ---
+Name:             frontend-deployment-9c9d585c6-bz2rg
+Namespace:        cloudforge
+Priority:         0
+Service Account:  default
+Node:             fedora/192.168.100.34
+Start Time:       Mon, 12 Jan 2026 13:39:35 +0300
+Labels:           app=frontend
+                  pod-template-hash=9c9d585c6
+                  service=frontend-service
+Annotations:      <none>
+Status:           Pending
+IP:               10.42.0.13
+IPs:
+  IP:           10.42.0.13
+Controlled By:  ReplicaSet/frontend-deployment-9c9d585c6
+Containers:
+  frontend:
+    Container ID:   
+    Image:          localhost/cloudforge-frontend:latest
+    Image ID:       
+    Port:           3000/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     100m
+      memory:  128Mi
+    Requests:
+      cpu:        50m
+      memory:     64Mi
+    Liveness:     http-get http://:3000/ delay=30s timeout=1s period=10s #success=1 #failure=3
+    Readiness:    http-get http://:3000/ delay=5s timeout=1s period=5s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-kmg5m (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-kmg5m:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                  From               Message
+  ----     ------     ----                 ----               -------
+  Normal   Scheduled  46m                  default-scheduler  Successfully assigned cloudforge/frontend-deployment-9c9d585c6-bz2rg to fedora
+  Normal   Pulling    43m (x5 over 46m)    kubelet            Pulling image "localhost/cloudforge-frontend:latest"
+  Warning  Failed     43m (x5 over 46m)    kubelet            Failed to pull image "localhost/cloudforge-frontend:latest": rpc error: code = NotFound desc = failed to pull and unpack image "localhost/cloudforge-frontend:latest": failed to resolve reference "localhost/cloudforge-frontend:latest": localhost/cloudforge-frontend:latest: not found
+  Warning  Failed     43m (x5 over 46m)    kubelet            Error: ErrImagePull
+  Normal   BackOff    94s (x197 over 46m)  kubelet            Back-off pulling image "localhost/cloudforge-frontend:latest"
+  Warning  Failed     94s (x197 over 46m)  kubelet            Error: ImagePullBackOff
+
+=== Logs for frontend-deployment-9c9d585c6-bz2rg ===
+Error from server (BadRequest): container "frontend" in pod "frontend-deployment-9c9d585c6-bz2rg" is waiting to start: trying and failing to pull image
+
+--- Pod: frontend-deployment-9c9d585c6-l7sfp ---
+Name:             frontend-deployment-9c9d585c6-l7sfp
+Namespace:        cloudforge
+Priority:         0
+Service Account:  default
+Node:             fedora/192.168.100.34
+Start Time:       Mon, 12 Jan 2026 13:39:35 +0300
+Labels:           app=frontend
+                  pod-template-hash=9c9d585c6
+                  service=frontend-service
+Annotations:      <none>
+Status:           Pending
+IP:               10.42.0.14
+IPs:
+  IP:           10.42.0.14
+Controlled By:  ReplicaSet/frontend-deployment-9c9d585c6
+Containers:
+  frontend:
+    Container ID:   
+    Image:          localhost/cloudforge-frontend:latest
+    Image ID:       
+    Port:           3000/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     100m
+      memory:  128Mi
+    Requests:
+      cpu:        50m
+      memory:     64Mi
+    Liveness:     http-get http://:3000/ delay=30s timeout=1s period=10s #success=1 #failure=3
+    Readiness:    http-get http://:3000/ delay=5s timeout=1s period=5s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-zk2nt (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-zk2nt:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                   From               Message
+  ----     ------     ----                  ----               -------
+  Normal   Scheduled  46m                   default-scheduler  Successfully assigned cloudforge/frontend-deployment-9c9d585c6-l7sfp to fedora
+  Normal   Pulling    43m (x5 over 46m)     kubelet            Pulling image "localhost/cloudforge-frontend:latest"
+  Warning  Failed     43m (x5 over 46m)     kubelet            Failed to pull image "localhost/cloudforge-frontend:latest": rpc error: code = NotFound desc = failed to pull and unpack image "localhost/cloudforge-frontend:latest": failed to resolve reference "localhost/cloudforge-frontend:latest": localhost/cloudforge-frontend:latest: not found
+  Warning  Failed     43m (x5 over 46m)     kubelet            Error: ErrImagePull
+  Normal   BackOff    106s (x197 over 46m)  kubelet            Back-off pulling image "localhost/cloudforge-frontend:latest"
+  Warning  Failed     106s (x197 over 46m)  kubelet            Error: ImagePullBackOff
+
+=== Logs for frontend-deployment-9c9d585c6-l7sfp ===
+Error from server (BadRequest): container "frontend" in pod "frontend-deployment-9c9d585c6-l7sfp" is waiting to start: trying and failing to pull image
+
+--- Pod: users-deployment-5dd754d787-svmwd ---
+Name:             users-deployment-5dd754d787-svmwd
+Namespace:        cloudforge
+Priority:         0
+Service Account:  default
+Node:             fedora/192.168.100.34
+Start Time:       Mon, 12 Jan 2026 14:06:31 +0300
+Labels:           app=users
+                  pod-template-hash=5dd754d787
+                  service=users-service
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-01-12T14:06:31+03:00
+Status:           Pending
+IP:               10.42.0.16
+IPs:
+  IP:           10.42.0.16
+Controlled By:  ReplicaSet/users-deployment-5dd754d787
+Containers:
+  users:
+    Container ID:   
+    Image:          localhost/cloudforge-users:latest
+    Image ID:       
+    Port:           8002/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     200m
+      memory:  256Mi
+    Requests:
+      cpu:      100m
+      memory:   128Mi
+    Liveness:   http-get http://:8002/health delay=30s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:8002/health delay=5s timeout=1s period=5s #success=1 #failure=3
+    Environment:
+      PORT:              8002
+      AUTH_SERVICE_URL:  <set to the key 'AUTH_SERVICE_URL' of config map 'cloudforge-config'>  Optional: false
+      LOG_LEVEL:         <set to the key 'LOG_LEVEL' of config map 'cloudforge-config'>         Optional: false
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-5qkfm (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-5qkfm:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                   From               Message
+  ----     ------     ----                  ----               -------
+  Normal   Scheduled  19m                   default-scheduler  Successfully assigned cloudforge/users-deployment-5dd754d787-svmwd to fedora
+  Normal   Pulling    17m (x5 over 19m)     kubelet            Pulling image "localhost/cloudforge-users:latest"
+  Warning  Failed     17m (x5 over 19m)     kubelet            Failed to pull image "localhost/cloudforge-users:latest": rpc error: code = NotFound desc = failed to pull and unpack image "localhost/cloudforge-users:latest": failed to resolve reference "localhost/cloudforge-users:latest": localhost/cloudforge-users:latest: not found
+  Warning  Failed     17m (x5 over 19m)     kubelet            Error: ErrImagePull
+  Normal   BackOff    4m51s (x64 over 19m)  kubelet            Back-off pulling image "localhost/cloudforge-users:latest"
+  Warning  Failed     4m51s (x64 over 19m)  kubelet            Error: ImagePullBackOff
+
+=== Logs for users-deployment-5dd754d787-svmwd ===
+Error from server (BadRequest): container "users" in pod "users-deployment-5dd754d787-svmwd" is waiting to start: trying and failing to pull image
+
+--- Pod: users-deployment-6c8fdfd755-s9dts ---
+Name:             users-deployment-6c8fdfd755-s9dts
+Namespace:        cloudforge
+Priority:         0
+Service Account:  default
+Node:             fedora/192.168.100.34
+Start Time:       Mon, 12 Jan 2026 13:39:34 +0300
+Labels:           app=users
+                  pod-template-hash=6c8fdfd755
+                  service=users-service
+Annotations:      <none>
+Status:           Pending
+IP:               10.42.0.11
+IPs:
+  IP:           10.42.0.11
+Controlled By:  ReplicaSet/users-deployment-6c8fdfd755
+Containers:
+  users:
+    Container ID:   
+    Image:          localhost/cloudforge-users:latest
+    Image ID:       
+    Port:           8002/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     200m
+      memory:  256Mi
+    Requests:
+      cpu:      100m
+      memory:   128Mi
+    Liveness:   http-get http://:8002/health delay=30s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:8002/health delay=5s timeout=1s period=5s #success=1 #failure=3
+    Environment:
+      PORT:              8002
+      AUTH_SERVICE_URL:  <set to the key 'AUTH_SERVICE_URL' of config map 'cloudforge-config'>  Optional: false
+      LOG_LEVEL:         <set to the key 'LOG_LEVEL' of config map 'cloudforge-config'>         Optional: false
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-xf8z5 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-xf8z5:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                  From               Message
+  ----     ------     ----                 ----               -------
+  Normal   Scheduled  46m                  default-scheduler  Successfully assigned cloudforge/users-deployment-6c8fdfd755-s9dts to fedora
+  Normal   Pulling    43m (x5 over 46m)    kubelet            Pulling image "localhost/cloudforge-users:latest"
+  Warning  Failed     43m (x5 over 46m)    kubelet            Failed to pull image "localhost/cloudforge-users:latest": rpc error: code = NotFound desc = failed to pull and unpack image "localhost/cloudforge-users:latest": failed to resolve reference "localhost/cloudforge-users:latest": localhost/cloudforge-users:latest: not found
+  Warning  Failed     43m (x5 over 46m)    kubelet            Error: ErrImagePull
+  Normal   BackOff    97s (x199 over 46m)  kubelet            Back-off pulling image "localhost/cloudforge-users:latest"
+  Warning  Failed     97s (x199 over 46m)  kubelet            Error: ImagePullBackOff
+
+=== Logs for users-deployment-6c8fdfd755-s9dts ===
+Error from server (BadRequest): container "users" in pod "users-deployment-6c8fdfd755-s9dts" is waiting to start: trying and failing to pull image
+
+--- Pod: users-deployment-6c8fdfd755-zlkpz ---
+Name:             users-deployment-6c8fdfd755-zlkpz
+Namespace:        cloudforge
+Priority:         0
+Service Account:  default
+Node:             fedora/192.168.100.34
+Start Time:       Mon, 12 Jan 2026 13:39:34 +0300
+Labels:           app=users
+                  pod-template-hash=6c8fdfd755
+                  service=users-service
+Annotations:      <none>
+Status:           Pending
+IP:               10.42.0.12
+IPs:
+  IP:           10.42.0.12
+Controlled By:  ReplicaSet/users-deployment-6c8fdfd755
+Containers:
+  users:
+    Container ID:   
+    Image:          localhost/cloudforge-users:latest
+    Image ID:       
+    Port:           8002/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     200m
+      memory:  256Mi
+    Requests:
+      cpu:      100m
+      memory:   128Mi
+    Liveness:   http-get http://:8002/health delay=30s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:8002/health delay=5s timeout=1s period=5s #success=1 #failure=3
+    Environment:
+      PORT:              8002
+      AUTH_SERVICE_URL:  <set to the key 'AUTH_SERVICE_URL' of config map 'cloudforge-config'>  Optional: false
+      LOG_LEVEL:         <set to the key 'LOG_LEVEL' of config map 'cloudforge-config'>         Optional: false
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-5wttm (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-5wttm:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                   From               Message
+  ----     ------     ----                  ----               -------
+  Normal   Scheduled  46m                   default-scheduler  Successfully assigned cloudforge/users-deployment-6c8fdfd755-zlkpz to fedora
+  Normal   Pulling    44m (x5 over 46m)     kubelet            Pulling image "localhost/cloudforge-users:latest"
+  Warning  Failed     44m (x5 over 46m)     kubelet            Failed to pull image "localhost/cloudforge-users:latest": rpc error: code = NotFound desc = failed to pull and unpack image "localhost/cloudforge-users:latest": failed to resolve reference "localhost/cloudforge-users:latest": localhost/cloudforge-users:latest: not found
+  Warning  Failed     44m (x5 over 46m)     kubelet            Error: ErrImagePull
+  Normal   BackOff    108s (x196 over 46m)  kubelet            Back-off pulling image "localhost/cloudforge-users:latest"
+  Warning  Failed     108s (x196 over 46m)  kubelet            Error: ImagePullBackOff
+
+=== Logs for users-deployment-6c8fdfd755-zlkpz ===
+Error from server (BadRequest): container "users" in pod "users-deployment-6c8fdfd755-zlkpz" is waiting to start: trying and failing to pull image
+

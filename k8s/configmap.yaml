@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloudforge-config
+  namespace: cloudforge
+data:
+  AUTH_SERVICE_URL: "http://auth-service:8001"
+  USERS_SERVICE_URL: "http://users-service:8002"
+  FRONTEND_URL: "http://frontend-service:3000"
+  LOG_LEVEL: "INFO"
+  ENVIRONMENT: "development"

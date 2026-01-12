@@ -1,0 +1,22 @@
+Fixing deployment image pull policies...
+Updating auth deployment...
+Error from server (BadRequest): unexpected end of JSON input
+Updating users deployment...
+Error from server (BadRequest): unexpected end of JSON input
+Updating frontend deployment...
+Error from server (BadRequest): unexpected end of JSON input
+Waiting for deployments to restart...
+error: deployment "auth-deployment" exceeded its progress deadline
+error: deployment "users-deployment" exceeded its progress deadline
+error: deployment "frontend-deployment" exceeded its progress deadline
+Checking pod status...
+NAME                                   READY   STATUS             RESTARTS   AGE
+auth-deployment-d788cf4ff-dqxwh        0/1     ImagePullBackOff   0          20m
+auth-deployment-db5b6d69b-krjk9        0/1     ImagePullBackOff   0          47m
+auth-deployment-db5b6d69b-qcnj9        0/1     ImagePullBackOff   0          47m
+frontend-deployment-79889cff75-mnzv9   0/1     ImagePullBackOff   0          20m
+frontend-deployment-9c9d585c6-bz2rg    0/1     ImagePullBackOff   0          47m
+frontend-deployment-9c9d585c6-l7sfp    0/1     ImagePullBackOff   0          47m
+users-deployment-5dd754d787-svmwd      0/1     ImagePullBackOff   0          20m
+users-deployment-6c8fdfd755-s9dts      0/1     ErrImagePull       0          47m
+users-deployment-6c8fdfd755-zlkpz      0/1     ImagePullBackOff   0          47m

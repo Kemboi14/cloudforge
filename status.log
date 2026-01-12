@@ -1,0 +1,29 @@
+=== CloudForge Platform Status ===
+
+=== Pods ===
+NAME                                  READY   STATUS             RESTARTS   AGE
+auth-deployment-db5b6d69b-krjk9       0/1     ImagePullBackOff   0          23m
+auth-deployment-db5b6d69b-qcnj9       0/1     ImagePullBackOff   0          23m
+frontend-deployment-9c9d585c6-bz2rg   0/1     ImagePullBackOff   0          23m
+frontend-deployment-9c9d585c6-l7sfp   0/1     ImagePullBackOff   0          23m
+users-deployment-6c8fdfd755-s9dts     0/1     ImagePullBackOff   0          23m
+users-deployment-6c8fdfd755-zlkpz     0/1     ImagePullBackOff   0          23m
+
+=== Services ===
+NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+auth-service       ClusterIP   10.43.68.99     <none>        8001/TCP         23m
+frontend-service   NodePort    10.43.179.233   <none>        3000:30080/TCP   23m
+users-service      ClusterIP   10.43.8.36      <none>        8002/TCP         23m
+
+=== Ingress ===
+NAME                 CLASS    HOSTS              ADDRESS   PORTS   AGE
+cloudforge-ingress   <none>   cloudforge.local             80      23m
+
+=== Nodes ===
+NAME     STATUS   ROLES           AGE   VERSION
+fedora   Ready    control-plane   48m   v1.34.3+k3s1
+
+=== Access URLs ===
+Frontend: http://localhost:30080
+Auth API: http://localhost:30080/api/auth
+Users API: http://localhost:30080/api/users

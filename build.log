@@ -1,0 +1,43 @@
+Testing script execution
+Current directory: /home/nick/cloudforge
+Podman version:
+podman version 5.7.1
+Building auth service...
+STEP 1/12: FROM python:3.11-slim
+STEP 2/12: ENV PYTHONDONTWRITEBYTECODE=1     PYTHONUNBUFFERED=1     PORT=8001
+--> Using cache 156f079775d6b3293010dac860c784ffd5d454317fb762030f3e60f0dc4d7e60
+--> 156f079775d6
+STEP 3/12: RUN apt-get update && apt-get install -y     gcc     && rm -rf /var/lib/apt/lists/*
+--> Using cache 72c25e2723b9a42dd9f4385355b098f639e8ad08f5c120c6f89c9f4cbbbaa6a3
+--> 72c25e2723b9
+STEP 4/12: WORKDIR /app
+--> Using cache c2faecb6a57583e39cc88a14848ba781323bd3267046812c56c9e670bc79ec4c
+--> c2faecb6a575
+STEP 5/12: COPY requirements.txt .
+--> Using cache 3cb718baeae9baf12f7116bbf245b413e8ed00e79c277fd2eb9194c7e7884ab1
+--> 3cb718baeae9
+STEP 6/12: RUN pip install --no-cache-dir -r requirements.txt
+--> Using cache 826870d2f812f7fc8eaecd6b62ccee39b25b7c49d754aaf089f7885837784b5f
+--> 826870d2f812
+STEP 7/12: COPY main.py .
+--> Using cache 35ac5eef9690f6bcb377e4dede5a58aff9f656280efaf825a679d8fd5f4ead66
+--> 35ac5eef9690
+STEP 8/12: RUN useradd --create-home --shell /bin/bash app     && chown -R app:app /app
+--> Using cache 85b72b10c7255e9a61c4a1a6fac5fd29c7b462be797bca5fcb80fc1e18725e53
+--> 85b72b10c725
+STEP 9/12: USER app
+--> Using cache 893c1478dc7bbf24e4a3f20dbc26c77b9ec0bc953ba0f30b2d6ad6c50980fe60
+--> 893c1478dc7b
+STEP 10/12: HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3     CMD curl -f http://localhost:${PORT}/health || exit 1
+--> Using cache db0ff6f0d1e52fd37e18f78c803267777e5789fbd617cde53f62faad824159ce
+--> db0ff6f0d1e5
+STEP 11/12: EXPOSE 8001
+--> Using cache bbaa2ba886a827c59679347e3a0df5d6770bd34d7477a4df04c5ceef71b254e0
+--> bbaa2ba886a8
+STEP 12/12: CMD ["python", "main.py"]
+--> Using cache c171b75d983611de1ba8e3490f6342ec27559b5f1a1d94433402f0598d0afab5
+COMMIT localhost/cloudforge-auth:latest
+--> c171b75d9836
+Successfully tagged localhost/cloudforge-auth:latest
+c171b75d983611de1ba8e3490f6342ec27559b5f1a1d94433402f0598d0afab5
+Build completed

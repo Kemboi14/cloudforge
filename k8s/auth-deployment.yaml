@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-deployment
+  namespace: cloudforge
+  labels:
+    app: auth
+    service: auth-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+        service: auth-service
+    spec:
+      containers:
+      - name: auth
+        image: localhost/cloudforge-auth:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8001
+        env:
+        - name: PORT
+          value: "8001"
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: cloudforge-secrets
+              key: SECRET_KEY
+        - name: ACCESS_TOKEN_EXPIRE_MINUTES
+          value: "30"
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: cloudforge-config
+              key: LOG_LEVEL
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8001
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8001
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      restartPolicy: Always

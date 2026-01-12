@@ -1,0 +1,117 @@
+Building all CloudForge images...
+Building auth service...
+STEP 1/12: FROM python:3.11-slim
+STEP 2/12: ENV PYTHONDONTWRITEBYTECODE=1     PYTHONUNBUFFERED=1     PORT=8001
+--> Using cache 156f079775d6b3293010dac860c784ffd5d454317fb762030f3e60f0dc4d7e60
+--> 156f079775d6
+STEP 3/12: RUN apt-get update && apt-get install -y     gcc     && rm -rf /var/lib/apt/lists/*
+--> Using cache 72c25e2723b9a42dd9f4385355b098f639e8ad08f5c120c6f89c9f4cbbbaa6a3
+--> 72c25e2723b9
+STEP 4/12: WORKDIR /app
+--> Using cache c2faecb6a57583e39cc88a14848ba781323bd3267046812c56c9e670bc79ec4c
+--> c2faecb6a575
+STEP 5/12: COPY requirements.txt .
+--> Using cache 3cb718baeae9baf12f7116bbf245b413e8ed00e79c277fd2eb9194c7e7884ab1
+--> 3cb718baeae9
+STEP 6/12: RUN pip install --no-cache-dir -r requirements.txt
+--> Using cache 826870d2f812f7fc8eaecd6b62ccee39b25b7c49d754aaf089f7885837784b5f
+--> 826870d2f812
+STEP 7/12: COPY main.py .
+--> Using cache 35ac5eef9690f6bcb377e4dede5a58aff9f656280efaf825a679d8fd5f4ead66
+--> 35ac5eef9690
+STEP 8/12: RUN useradd --create-home --shell /bin/bash app     && chown -R app:app /app
+--> Using cache 85b72b10c7255e9a61c4a1a6fac5fd29c7b462be797bca5fcb80fc1e18725e53
+--> 85b72b10c725
+STEP 9/12: USER app
+--> Using cache 893c1478dc7bbf24e4a3f20dbc26c77b9ec0bc953ba0f30b2d6ad6c50980fe60
+--> 893c1478dc7b
+STEP 10/12: HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3     CMD curl -f http://localhost:${PORT}/health || exit 1
+--> Using cache db0ff6f0d1e52fd37e18f78c803267777e5789fbd617cde53f62faad824159ce
+--> db0ff6f0d1e5
+STEP 11/12: EXPOSE 8001
+--> Using cache bbaa2ba886a827c59679347e3a0df5d6770bd34d7477a4df04c5ceef71b254e0
+--> bbaa2ba886a8
+STEP 12/12: CMD ["python", "main.py"]
+--> Using cache c171b75d983611de1ba8e3490f6342ec27559b5f1a1d94433402f0598d0afab5
+COMMIT localhost/cloudforge-auth:latest
+--> c171b75d9836
+Successfully tagged localhost/cloudforge-auth:latest
+c171b75d983611de1ba8e3490f6342ec27559b5f1a1d94433402f0598d0afab5
+Building users service...
+STEP 1/12: FROM python:3.11-slim
+STEP 2/12: ENV PYTHONDONTWRITEBYTECODE=1     PYTHONUNBUFFERED=1     PORT=8002
+--> Using cache ba4aadd9f11118e1a26b8b0d184ce4d2ec64eb7a86914a3f7921c4b2acd93889
+--> ba4aadd9f111
+STEP 3/12: RUN apt-get update && apt-get install -y     gcc     curl     && rm -rf /var/lib/apt/lists/*
+--> Using cache cd5fb0347faa5969070b8f770b7a13aa0a1823cbbce0b4b9a3d1de4c42830534
+--> cd5fb0347faa
+STEP 4/12: WORKDIR /app
+--> Using cache 179be3b953c63bd7c06a2f0d68c544556f6f5574c5b72bf4f3af9fe740c8c784
+--> 179be3b953c6
+STEP 5/12: COPY requirements.txt .
+--> Using cache 3c72ea8ff3e344e33848f682f3f935e151511ecad2b1ef999ce1bd3459bcf910
+--> 3c72ea8ff3e3
+STEP 6/12: RUN pip install --no-cache-dir -r requirements.txt
+--> Using cache 481b269dcf9acfaf10488245d12b6e02f437b006dd25b185207c5a391fa10ee9
+--> 481b269dcf9a
+STEP 7/12: COPY main.py .
+--> Using cache 941ea376cbb8ef9e717344f5b323a580303f946d92bffd15e2be356104a6ad23
+--> 941ea376cbb8
+STEP 8/12: RUN useradd --create-home --shell /bin/bash app     && chown -R app:app /app
+--> Using cache 98329aa88d38b66f7a9a0de3c9e264a4aab03371d3055fa014ac2c1a62034c31
+--> 98329aa88d38
+STEP 9/12: USER app
+--> Using cache a838974c132773866cced5d5355773edce5d39ae2cb19c7a0d111dab263a72f2
+--> a838974c1327
+STEP 10/12: HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3     CMD curl -f http://localhost:${PORT}/health || exit 1
+--> Using cache 501fd84d482a5d8ab27aab903d649a4cc35fc801a0c68b849cb8eed3811b3438
+--> 501fd84d482a
+STEP 11/12: EXPOSE 8002
+--> Using cache c7175f0d56db50716e2863e35e773784108ab8ead262171d8dcccdce44e3ea2a
+--> c7175f0d56db
+STEP 12/12: CMD ["python", "main.py"]
+--> Using cache 4419b2fa5e66fb32a7f6310e7bdd4939af690032addedd6b8eea426c57afa3c7
+COMMIT localhost/cloudforge-users:latest
+--> 4419b2fa5e66
+Successfully tagged localhost/cloudforge-users:latest
+4419b2fa5e66fb32a7f6310e7bdd4939af690032addedd6b8eea426c57afa3c7
+Building frontend...
+[1/2] STEP 1/6: FROM node:18-alpine AS builder
+[1/2] STEP 2/6: WORKDIR /app
+--> Using cache 0c930e3ad395e3dee984898f5494dc8078b119337c2c24433c46e4530a5c3a40
+--> 0c930e3ad395
+[1/2] STEP 3/6: COPY package*.json ./
+--> Using cache 39c09918bdb5d5677521e56975604e236f3a8fef3934c57d5566ef76ab53e441
+--> 39c09918bdb5
+[1/2] STEP 4/6: RUN npm install
+--> Using cache 4659c82c305f8e23fc7d8a1ccf52b947344771bfb19b82b959473dd96f5aa5ee
+--> 4659c82c305f
+[1/2] STEP 5/6: COPY . .
+--> Using cache b4908ac9c85287e821007c1f3311abde21a3390a2a94aca77033b47b9582cdc0
+--> b4908ac9c852
+[1/2] STEP 6/6: RUN npm run build
+--> Using cache 1cd8ba288749a5dc985fed7bcd605c00cf9758d3dc106a6647ea67e70ff8a553
+--> 1cd8ba288749
+[2/2] STEP 1/6: FROM nginx:alpine
+[2/2] STEP 2/6: COPY --from=builder /app/build /usr/share/nginx/html
+--> Using cache a5dc2f5b59fdd5cc8affa4f536f8f2ec9a7fc3dc269017ca5dec14a60603ae19
+--> a5dc2f5b59fd
+[2/2] STEP 3/6: COPY nginx.conf /etc/nginx/conf.d/default.conf
+--> Using cache f75bc927ea606c37bf3c11f775387c4f1d365da8b0b0c3277dc7a78656940334
+--> f75bc927ea60
+[2/2] STEP 4/6: RUN addgroup -g 1001 -S nodejs &&     adduser -S nextjs -u 1001
+--> Using cache 9a611a374f02c21f67cfe4f68e2fc0d64c7001eb35cb5346f017678f180bf95f
+--> 9a611a374f02
+[2/2] STEP 5/6: EXPOSE 3000
+--> Using cache 637d22b833993be5f49e4f2ba554625ff6d5b82b59e06abe29b45ffa7a97b6d3
+--> 637d22b83399
+[2/2] STEP 6/6: CMD ["nginx", "-g", "daemon off;"]
+--> Using cache bd44ac682184ed05540d6b6c7b6832df4d132ce5e215ee05a017cd8abaa87e5a
+[2/2] COMMIT localhost/cloudforge-frontend:latest
+--> bd44ac682184
+Successfully tagged localhost/cloudforge-frontend:latest
+bd44ac682184ed05540d6b6c7b6832df4d132ce5e215ee05a017cd8abaa87e5a
+All images built successfully!
+localhost/cloudforge-frontend  latest      bd44ac682184  7 minutes ago   64.1 MB
+localhost/cloudforge-users     latest      4419b2fa5e66  16 minutes ago  397 MB
+localhost/cloudforge-auth      latest      c171b75d9836  17 minutes ago  405 MB
