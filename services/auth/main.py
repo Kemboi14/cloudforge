@@ -28,6 +28,11 @@ app = FastAPI(
 security = HTTPBearer()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+# Ensure SECRET_KEY is not too long for bcrypt
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
+if len(SECRET_KEY) > 72:
+    SECRET_KEY = SECRET_KEY[:72]
+
 # Models
 class User(BaseModel):
     username: str
